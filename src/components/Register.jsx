@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 const Register = () => {
  const [name,setname]=useState('')
@@ -25,6 +26,7 @@ const Register = () => {
         <input type="password" value={password} onChange={(e)=>setpass(e.target.value)} />
         <br /><br />
         <button onClick={send}>send</button>
+        <p>already have an account?<Link to='/login'><b>click here</b></Link></p>
     </div>
   )
 }
