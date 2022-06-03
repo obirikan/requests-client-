@@ -19,6 +19,9 @@ const Register = () => {
      seterror('')
    }).catch((error)=>{
        seterror(error.response.data)
+       setTimeout(() => {
+        seterror('')
+      },3000);
    })
  }
   return (

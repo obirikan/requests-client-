@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -7,6 +7,10 @@ const Login = () => {
 const [name,setname]=useState('')
 const [password,setpass]=useState('')
 const [error,seterror]=useState()
+
+useEffect(()=>{
+   
+},[])
 
 const send=async()=>{
     const config={
@@ -18,8 +22,10 @@ const send=async()=>{
         console.log(res.data)
         setname('')
       }).catch((err)=>{
-          console.log(err)
           seterror(err.response.data)
+          setTimeout(() => {
+            seterror('')
+        },3000);
       })
   }
   return (
