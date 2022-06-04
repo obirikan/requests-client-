@@ -4,10 +4,14 @@ import axios from 'axios'
 const Pages = () => {
 const [data,setdata]=useState([])
 const [user,setuser]=useState()
+const [tok,settok]=useState()
+
 useEffect(()=>{
-  const it=async()=>{
+    const it=async()=>{
     const user = JSON.parse(localStorage.getItem("info"));
-    setuser(user)
+    const {person,token}=user
+     settok(token)
+    setuser(person)
     const config = {
       headers:{
         Authorization: `Bearer ${user.token}`,
@@ -25,12 +29,27 @@ useEffect(()=>{
 const send=async (pid)=>{
   const config = {
     headers:{
-      Authorization: `Bearer ${user.token}`,
+      Authorization: `Bearer ${tok}`,
          },
   };
   await axios.put('http://localhost:7000/api/handlers/send',{pid},config)
-  .then((res)=>console.log(res.data))
-  .catch((err)=>console.log(err))
+  .then((res)=>
+  setuser(res.data),
+  )
+  .catch((err)=>console.log(err.response.data.msg))
+}
+
+const accept=async (id)=>{
+  const config = {
+    headers:{
+      Authorization: `Bearer ${tok}`,
+         },
+  };
+  await axios.put('http://localhost:7000/api/handlers/acceptRequest',{id},config)
+  .then((res)=>
+  setuser(res.data),
+  )
+  .catch((err)=>console.log(err.response.data.msg))
 }
 
 
@@ -39,7 +58,10 @@ const send=async (pid)=>{
       <h1>pages</h1>
       <>
        {data.map((a)=>(
-         <h3 key={a._id}>{a.user}:{user.person.friendlist.includes(a._id)?(<b style={{color:"green"}}>friends</b>):(<button onClick={()=>{send(a._id)}}>send request</button>)}</h3>
+         <h3 key={a._id}>
+           {a.user}:{user.friendlist.includes(a._id)?(<b style={{color:"green"}}>friends</b>)
+           :(user.sendRequest.includes(a._id)?(<b style={{color:"tomato"}}>pending</b>)
+           :user.Requests.includes(a._id)?(<button onClick={()=>{accept(a._id)}}>accept request</button>):(<button onClick={()=>{send(a._id)}}>send request</button>))}</h3>
        ))}
       </>
     </div>
