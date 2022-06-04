@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const Login = () => {
 const [name,setname]=useState('')
 const [password,setpass]=useState('')
 const [error,seterror]=useState()
+const history=useHistory()
 
-useEffect(()=>{
-   
-},[])
 
 const send=async()=>{
     const config={
@@ -21,6 +19,8 @@ const send=async()=>{
     await axios.post('http://localhost:7000/api/users/login',{users:name,password:password},config).then((res)=>{
         console.log(res.data)
         setname('')
+        localStorage.setItem("info",JSON.stringify(res.data))
+        history.push('/main')
       }).catch((err)=>{
           seterror(err.response.data)
           setTimeout(() => {

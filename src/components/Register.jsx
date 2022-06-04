@@ -2,10 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
+
 const Register = () => {
  const [name,setname]=useState('')
  const [password,setpass]=useState('')
  const [error,seterror]=useState()
+ const history = useHistory();
 
  const send=async()=>{
    const config={
@@ -16,7 +19,8 @@ const Register = () => {
    await axios.post('http://localhost:7000/api/users/register',{users:name,password:password},config).then((res)=>{
      console.log(res.data)
      setname('')
-     seterror('')
+     localStorage.setItem("info",JSON.stringify(res.data))
+     history.push("/main");
    }).catch((error)=>{
        seterror(error.response.data)
        setTimeout(() => {
