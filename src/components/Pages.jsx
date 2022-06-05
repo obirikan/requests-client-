@@ -1,9 +1,12 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import { BrowserRouter,Router, } from 'react-router-dom'
+import Nav from './Nav'
 
 const Pages = () => {
 const [data,setdata]=useState([])
 const [user,setuser]=useState()
+const [status,setstatus]=useState(true)
 const [tok,settok]=useState()
 
 useEffect(()=>{
@@ -24,6 +27,7 @@ useEffect(()=>{
     })
   }
   it()
+
 },[])
 
 const send=async (pid)=>{
@@ -56,6 +60,7 @@ const accept=async (id)=>{
   return (
     <div>
       <h1>pages</h1>
+      <Nav/>
       <>
        {data.map((a)=>(
          <h3 key={a._id}>
