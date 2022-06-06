@@ -6,6 +6,7 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import Nav from "./components/Nav";
 import Sent from "./components/Sent";
 import Res from "./components/Res";
+import Friends from "./components/Friends";
 
 function App() {
   const [status,setstatus]=useState(false)
@@ -16,6 +17,7 @@ function App() {
     {status?<Nav/>:''}
     <Switch>
        <Route path='/' component={Register} exact/>
+       <Route path='/friends' component={Friends} exact/>
        <Route path='/sent' component={Sent} exact/>
        <Route path='/recieve' component={Res} exact/>
        <Route path='/login' component={Login} exact/>

@@ -4,7 +4,7 @@ import Nav from './Nav'
 const Res = () => {
   return (
       <>
-      <h2>received request</h2>
+      <h1>received request</h1>
       <><Nav/></>
       </>
   )

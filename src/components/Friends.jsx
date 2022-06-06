@@ -1,8 +1,8 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect,useState} from 'react'
 import Nav from './Nav'
 import axios from 'axios'
 
-const Sent = () => {
+const Friends = () => {
     const [data,setdata]=useState([])
     const [user,setuser]=useState()
 
@@ -16,7 +16,7 @@ const Sent = () => {
             Authorization: `Bearer ${user.token}`,
                },
         };
-           await axios.get('http://localhost:7000/api/handlers/sentrequests',config).then((res)=>{
+           await axios.get('http://localhost:7000/api/handlers/friends',config).then((res)=>{
           setdata(res.data)
         }).catch((err)=>{
             alert('network error')
@@ -26,16 +26,16 @@ const Sent = () => {
     },[])
   return (
     <div>
-        <h1>sent request</h1>
+        <h1>Friendlist</h1>
         <><Nav/></>
         <>
         {data.map((a)=>(
          <h3 key={a._id}>
-           {a.user}{user.sendRequest.includes(a._id)&&<button>withdraw</button>}
+           {a.user}{user.friendlist.includes(a._id)&&<button>withdraw</button>}
         </h3>
        ))}</>
     </div>
   )
 }
 
-export default Sent
+export default Friends
