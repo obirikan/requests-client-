@@ -18,7 +18,7 @@ function App() {
     <Switch>
        <Route path='/' component={Register} exact/>
        <Route path='/friends' component={Friends} exact/>
-       {/* <Route path='/sent' component={Sent} exact/> */}
+       <Route path='/sent' component={Sent} exact/>
        <Route path='/recieve' component={Res} exact/>
        <Route path='/login' component={Login} exact/>
        <Route path='/main' component={Pages} exact/>
