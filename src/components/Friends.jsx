@@ -23,6 +23,27 @@ const Friends = () => {
       }
       it()
     },[])
+
+    
+    const withdraw=async(id)=>{
+      const user=JSON.parse(localStorage.getItem('info'))
+      const token=user.token
+      const config={
+        headers:{
+          Authorization:`Bearer ${user.token}`
+        }
+    }
+     await axios.put('http://localhost:7000/api/handlers/unfriend',{id},config).then(res=>{
+     let data1=res.data
+     data1={...data1,token}
+     localStorage.setItem("info",JSON.stringify(data1))
+     setuser(data1)
+  //    settoken(data1.token)})
+  }).catch((error)=>{
+     console.log(error)
+    })
+  }
+
   return (
     <div>
         <h1>Friendlist</h1>
@@ -30,7 +51,7 @@ const Friends = () => {
         <>
         {data.map((a)=>(
          <h3 key={a._id}>
-           {a.user}{user.friendlist.includes(a._id)&&<button>withdraw</button>}
+           {a.user}:{user.friendlist.includes(a._id)?(<button onClick={()=>{withdraw(a._id)}}>unfriend</button>):"done"}
         </h3>
        ))}</>
     </div>
