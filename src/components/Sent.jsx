@@ -49,9 +49,9 @@ const Sent = () => {
         <><Nav/></>
         <>
         {data.map((a)=>(
-         <h3 key={a._id}>
-          {a.user}{user.sendRequest.includes(a._id)?<button onClick={()=>{withdraw(a._id)}}>withdraw</button>:'removed'}
-        </h3>
+         <h2 key={a._id}>
+          {a.user}{user.sendRequest.includes(a._id)?<button className='btn-1' onClick={()=>{withdraw(a._id)}}>withdraw</button>:'removed'}
+        </h2>
        ))}</>
     </div>
   )

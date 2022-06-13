@@ -49,9 +49,9 @@ const Res = () => {
       <><Nav/></>
        <>
        {data.map((a)=>(
-         <h3 key={a._id}>
-           {a.user}:{user.Requests.includes(a._id)?(<button onClick={()=>{withdraw(a._id)}}>reject</button>):"done"}
-        </h3>
+         <h2 key={a._id}>
+           {a.user}:{user.Requests.includes(a._id)?(<button className='btn-1' onClick={()=>{withdraw(a._id)}}>reject</button>):"done"}
+        </h2>
        ))}
       </>
   </>
