@@ -107,6 +107,9 @@ input{
     border: none;
     border-radius: 5px;
 }
+.btn-3:hover{
+    cursor: pointer;
+}
 img{
     width: 50px;
     position: relative;

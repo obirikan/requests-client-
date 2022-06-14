@@ -60,7 +60,7 @@ const Friends = () => {
        <>
         {data.map((a)=>
          <h2 key={a._id}>
-         {a.user}:{user.friendlist.includes(a._id)?(<button className='btn-3' onClick={()=>{withdraw(a._id)}}>unfriend</button>):"done"}
+         {a.user}:{user.friendlist.includes(a._id)?(<button className='btn-3' onClick={()=>{withdraw(a._id)}}>unfriend</button>):<b style={{color:'tomato'}}>removed</b>}
       </h2>
        )}
         </>
