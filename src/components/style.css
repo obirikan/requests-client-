@@ -3,11 +3,19 @@
     padding: 0px;
     /* border: 1px solid black; */
 }
+.ic{
+    display: inline;
+}
 button{
     padding: 5px;
     margin-left: 10px;
     width: 100px;
     
+}
+.imgg{
+    width: 30px;
+    margin-bottom: 5px;
+    display: none;
 }
 .link2{
     margin-top: 20px;
@@ -106,7 +114,7 @@ img{
 }
 .nav{
    background-color: #3498db;
-   padding: 20px;
+   padding: 10px;
 }
 b{
     margin-left: 10px;
@@ -122,3 +130,16 @@ b{
 .btn-1:hover{
     cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .imgg{
+        margin-bottom: 20px;
+        margin-left: 28px;
+        display: inline;
+    }
+    .ic{
+        display: none;
+    }
+  
+  }
