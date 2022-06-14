@@ -5,10 +5,12 @@ import axios from 'axios'
 const Friends = () => {
     const [data,setdata]=useState([])
     const [user,setuser]=useState()
+    const [length,setlen]=useState(0)
 
     useEffect(()=>{
         const it=async()=>{
         const user = JSON.parse(localStorage.getItem("info"));
+        setlen(user.sendRequest.length)
         setuser(user)
         const config = {
           headers:{
@@ -22,7 +24,7 @@ const Friends = () => {
         })
       }
       it()
-    },[])
+    },[length])
 
     
     const withdraw=async(id)=>{
@@ -48,12 +50,21 @@ const Friends = () => {
     <div>
         <h1>Friendlist</h1>
         <><Nav/></>
-        <>
+        {/* <>
         {data.map((a)=>(
-         <h3 key={a._id}>
-           {a.user}:{user.friendlist.includes(a._id)?(<button onClick={()=>{withdraw(a._id)}}>unfriend</button>):"done"}
-        </h3>
-       ))}</>
+         <h2 key={a._id}>
+           {a.user}:{user.friendlist.includes(a._id)?(<button className='btn-3' onClick={()=>{withdraw(a._id)}}>unfriend</button>):"done"}
+        </h2>
+       ))}</> */}
+        {length>0?
+       <>
+        {data.map((a)=>
+         <h2 key={a._id}>
+         {a.user}:{user.friendlist.includes(a._id)?(<button className='btn-3' onClick={()=>{withdraw(a._id)}}>unfriend</button>):"done"}
+      </h2>
+       )}
+        </>
+      :<h5 className='undone-1'>No friends</h5>} 
     </div>
   )
 }

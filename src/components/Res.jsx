@@ -49,13 +49,6 @@ const Res = () => {
   <div>
       <h1>received request</h1>
       <><Nav/></>
-       {/* <>
-       {data.map((a)=>
-         <h2 key={a._id}>
-           {a.user}:{user.Requests.includes(a._id)?(<button className='btn-1' onClick={()=>{withdraw(a._id)}}>reject</button>):"done"}
-        </h2>
-       )}
-      </> */}
       {length>0?
        <>
         {data.map((a)=>
