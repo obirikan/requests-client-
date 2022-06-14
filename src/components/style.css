@@ -9,6 +9,10 @@ button{
     width: 100px;
     
 }
+.link2{
+    margin-top: 20px;
+    opacity: 0.7;
+}
 .div1{
     padding: 20px;
     font-size: 20px;
@@ -19,6 +23,37 @@ button{
 h2{
     padding: 20px;
     
+}
+.err{
+    margin-bottom: 15px;
+    /* border: 1px solid black; */
+    padding: 7px;
+    background-color: rgb(255, 0, 51);
+    color :white;
+    border-radius: 5px;
+}
+.btn-5{
+    width: 150px;
+    background-color: #3498db;
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+}
+.btn-5:hover{
+    cursor:pointer;
+}
+input{
+    padding: 4px;
+}
+.p{
+    /* border: 1px solid black; */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+    top: 200px;
 }
 
 

@@ -29,15 +29,17 @@ const send=async()=>{
       })
   }
   return (
-<div>
-    <h1>login</h1>
-    <h4 style={{color:'red'}}>{error}</h4>
-    <input type="text" value={name} onChange={(e)=>setname(e.target.value)} />
+<div className="p">
+  <center>
+   <h1>Login</h1>
+    {error?(<h4 className="err">{error}</h4>):" "}
+    <input type="text" placeholder='username' value={name} onChange={(e)=>setname(e.target.value)} />
     <br /><br />
-    <input type="password" value={password} onChange={(e)=>setpass(e.target.value)} />
+    <input type="password" placeholder='password' value={password} onChange={(e)=>setpass(e.target.value)} />
     <br /><br />
-    <button onClick={send}>send</button>
-    <p>Don't have an account?<Link to='/'><b>click here</b></Link></p>        
+    <button onClick={send} className='btn-5'>send</button>
+    <p className='link2'>Don't have an account?<Link to='/'><b>click here</b></Link></p>  
+  </center>
 </div>
   )
 }
