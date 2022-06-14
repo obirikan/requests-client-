@@ -5,11 +5,13 @@ import axios from 'axios'
 const Res = () => {
   const [data,setdata]=useState([])
   const [user,setuser]=useState()
+  const [length,setlen]=useState(0)
 
   useEffect(()=>{
       const it=async()=>{
       const user = JSON.parse(localStorage.getItem("info"));
       setuser(user)
+      setlen(user.sendRequest.length)
       const config = {
         headers:{
           Authorization: `Bearer ${user.token}`,
@@ -22,7 +24,7 @@ const Res = () => {
       })
     }
     it()
-  },[])
+  },[length])
 
   const withdraw=async(id)=>{
     const user=JSON.parse(localStorage.getItem('info'))
@@ -44,17 +46,26 @@ const Res = () => {
 }
 
   return (
-  <>
+  <div>
       <h1>received request</h1>
       <><Nav/></>
-       <>
-       {data.map((a)=>(
+       {/* <>
+       {data.map((a)=>
          <h2 key={a._id}>
            {a.user}:{user.Requests.includes(a._id)?(<button className='btn-1' onClick={()=>{withdraw(a._id)}}>reject</button>):"done"}
         </h2>
-       ))}
-      </>
-  </>
+       )}
+      </> */}
+      {length>0?
+       <>
+        {data.map((a)=>
+        <h2 key={a._id}>
+          {a.user}:{user.Requests.includes(a._id)?(<button className='btn-1' onClick={()=>{withdraw(a._id)}}>reject</button>):"done"}
+       </h2>
+       )}
+        </>
+      :<h5 className='undone-1'>No Recieved Request</h5>} 
+  </div>
   )
 }
 

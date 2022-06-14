@@ -45,6 +45,29 @@ h2{
 }
 input{
     padding: 4px;
+    outline:#3498db
+}
+.undone{
+    font-size: 35px;
+    /* border: 1px solid rgb(0, 0, 0); */
+    color: rgb(173, 169, 169);
+    opacity: 0.5;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+.undone-1{
+    font-size: 35px;
+    /* border: 1px solid rgb(0, 0, 0); */
+    color: rgb(173, 169, 169);
+    opacity: 0.5;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
 }
 .p{
     /* border: 1px solid black; */
