@@ -10,14 +10,14 @@ const Friends = () => {
     useEffect(()=>{
         const it=async()=>{
         const user = JSON.parse(localStorage.getItem("info"));
-        setlen(user.sendRequest.length)
+        setlen(user.friendlist.length)
         setuser(user)
         const config = {
           headers:{
             Authorization: `Bearer ${user.token}`,
                },
         };
-           await axios.get('http://localhost:7000/api/handlers/friends',config).then((res)=>{
+           await axios.get('https://frndrequest.herokuapp.com/api/handlers/friends',config).then((res)=>{
           setdata(res.data)
         }).catch((err)=>{
             alert('network error')
@@ -35,7 +35,7 @@ const Friends = () => {
           Authorization:`Bearer ${user.token}`
         }
     }
-     await axios.put('http://localhost:7000/api/handlers/unfriend',{id},config).then(res=>{
+     await axios.put('https://frndrequest.herokuapp.com/api/handlers/unfriend',{id},config).then(res=>{
      let data1=res.data
      data1={...data1,token}
      localStorage.setItem("info",JSON.stringify(data1))

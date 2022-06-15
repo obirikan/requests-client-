@@ -11,13 +11,13 @@ const Res = () => {
       const it=async()=>{
       const user = JSON.parse(localStorage.getItem("info"));
       setuser(user)
-      setlen(user.sendRequest.length)
+      setlen(user.Requests.length)
       const config = {
         headers:{
           Authorization: `Bearer ${user.token}`,
              },
       };
-         await axios.get('http://localhost:7000/api/handlers/requests',config).then((res)=>{
+         await axios.get('https://frndrequest.herokuapp.com/api/handlers/requests',config).then((res)=>{
         setdata(res.data)
       }).catch((err)=>{
           alert('network error')
@@ -34,7 +34,7 @@ const Res = () => {
         Authorization:`Bearer ${user.token}`
       }
   }
-   await axios.put('http://localhost:7000/api/handlers/unrec',{id},config).then(res=>{
+   await axios.put('https://frndrequest.herokuapp.com/api/handlers/unrec',{id},config).then(res=>{
    let data1=res.data
    data1={...data1,token}
    localStorage.setItem("info",JSON.stringify(data1))

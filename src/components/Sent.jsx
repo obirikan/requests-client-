@@ -12,13 +12,12 @@ const Sent = () => {
         const user = JSON.parse(localStorage.getItem("info"));
         setuser(user)
         setlen(user.sendRequest.length)
-        console.log(length)
         const config = {
           headers:{
             Authorization: `Bearer ${user.token}`,
                },
         };
-           await axios.get('http://localhost:7000/api/handlers/sentrequests',config).then((res)=>{
+           await axios.get('https://frndrequest.herokuapp.com/api/handlers/sentrequests',config).then((res)=>{
           setdata(res.data)
         
         }).catch((err)=>{
@@ -36,7 +35,7 @@ const Sent = () => {
             Authorization:`Bearer ${user.token}`
           }
       }
-       await axios.put('http://localhost:7000/api/handlers/unsend',{id},config).then(res=>{
+       await axios.put('https://frndrequest.herokuapp.com/api/handlers/unsend',{id},config).then(res=>{
        let data1=res.data
        data1={...data1,token}
        localStorage.setItem("info",JSON.stringify(data1))

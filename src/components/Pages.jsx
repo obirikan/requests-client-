@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useContext} from 'react'
+import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import './style.css'
 import Nav from './Nav'
@@ -14,13 +14,12 @@ useEffect(()=>{
     const user= JSON.parse(localStorage.getItem('info'))
     setperson(user)
     settoken(user.token)
-    console.log(user)
      const config={
          headers:{
            Authorization:`Bearer ${user.token || token }`
          }
      }
-    await axios.get('http://localhost:7000/api/handlers/allusers',config).then(res=>{
+    await axios.get('https://frndrequest.herokuapp.com/api/handlers/allusers',config).then(res=>{
       setdata(res.data)
     }).catch((error)=>{
       console.log(error)
@@ -37,7 +36,7 @@ const send= async (pid)=>{
       Authorization:`Bearer ${user.token}`
     }
 }
-await axios.put('http://localhost:7000/api/handlers/send',{pid},config).then(res=>{
+await axios.put('https://frndrequest.herokuapp.com/api/handlers/send',{pid},config).then(res=>{
  let data1=res.data
  data1={...data1,token}
  localStorage.setItem("info",JSON.stringify(data1))
@@ -56,7 +55,7 @@ const reject=async(id)=>{
       Authorization:`Bearer ${user.token}`
     }
 }
- await axios.put('http://localhost:7000/api/handlers/unrec',{id},config).then(res=>{
+ await axios.put('https://frndrequest.herokuapp.com/api/handlers/unrec',{id},config).then(res=>{
  let data1=res.data
  data1={...data1,token}
  localStorage.setItem("info",JSON.stringify(data1))
@@ -75,7 +74,7 @@ const accept= async (id)=>{
       Authorization:`Bearer ${user.token}`
     }
 }
-await axios.put('http://localhost:7000/api/handlers/acceptRequest',{id},config).then(res=>{
+await axios.put('https://frndrequest.herokuapp.com/api/handlers/acceptRequest',{id},config).then(res=>{
  let data1=res.data
  data1={...data1,token}
  localStorage.setItem("info",JSON.stringify(data1))

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
@@ -16,8 +16,7 @@ const send=async()=>{
             "Content-type":"application/json"
         }
     }
-    await axios.post('http://localhost:7000/api/users/login',{users:name,password:password},config).then((res)=>{
-        console.log(res.data)
+    await axios.post('https://frndrequest.herokuapp.com/api/users/login',{users:name,password:password},config).then((res)=>{
         setname('')
         localStorage.setItem("info",JSON.stringify(res.data))
         history.push('/main')
